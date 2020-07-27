@@ -8,9 +8,25 @@ const Generos = () => {
         return (
             <div className='d-flex justify-content-between mb-4'>
                 <h1>Gêneros</h1>
-                <Link to='/generos/novo' className='btn btn-info'>+ Cadastrar</Link>
+                <Link to='/generos/novo' className='btn btn-info'><i className="fa fa-plus" aria-hidden="true"></i> Cadastrar</Link>
             </div>
         )
+    }
+
+    const deletarGenero = (id) => {
+        const confirmDelete = () => window.confirm('Deseja realmente excluir este Gênero?');
+
+        if (confirmDelete()) {
+            axios
+                .delete(`/api/genres/${id}`)
+                .then(() => {
+                    const dataFiltered = data.filter(item => item.id !== id);
+                    setData(dataFiltered);
+                    alert('Gênero deletado com sucesso! /o/');
+                })
+                .catch((error) => alert('Ocorreu um erro ao deletar o Gênero! :('))
+        }
+        return;
     }
 
     const tableRowData = (item, index) => {
@@ -19,8 +35,12 @@ const Generos = () => {
                 <td>{item.id}</td>
                 <td>{item.name}</td>
                 <td>
-                    <a className="text-primary mr-2">Editar</a>
-                    <a className="text-primary ">Excluir</a>
+                    <Link to='/genres/{item.id}' className="btn btn-warning py-2 px-3 mr-2">
+                        <i className="fa fa-pencil" aria-hidden="true"></i> Editar
+                    </Link>
+                    <button onClick={() => deletarGenero(item.id)} className="btn btn-danger py-2 px-3">
+                        <i className="fa fa-trash" aria-hidden="true"></i> Excluir
+                    </button>
                 </td>
             </tr>
         )
