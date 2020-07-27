@@ -14,13 +14,13 @@ const Series = () => {
     }
 
     const deletarSerie = (id) => {
-        const confirmDelete = () => window.confirm('Deseja realmente excluir este Gênero?');
+        const confirmDelete = () => window.confirm('Deseja realmente excluir esta Série?');
 
         if (confirmDelete()) {
             axios
                 .delete(`/api/series/${id}`)
                 .then(() => {
-                    const dataFiltered = data.filter(item => item.id != id);
+                    const dataFiltered = data.filter(item => item.id !== id);
                     setData(dataFiltered);
                     alert('Série deletada com sucesso! /o/');
                 })

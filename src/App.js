@@ -11,6 +11,7 @@ import Generos from './Generos';
 import NovoGenero from './NovoGenero';
 import EditarGenero from './EditarGenero';
 import Series from './Series';
+import NovaSerie from './NovaSerie';
 
 function App() {
   const [data, setData] = useState({});
@@ -22,6 +23,7 @@ function App() {
         <Switch>
           <Route path='/' exact component={Home} />
           <Route path='/series' exact component={Series} />
+          <Route path='/series/novo' exact component={NovaSerie} />
           <Route path='/generos' exact component={Generos} />
           <Route path='/generos/novo' exact component={NovoGenero} />
           <Route path='/generos/:id' exact component={EditarGenero} />
