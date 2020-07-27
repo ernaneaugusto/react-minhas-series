@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const NovoGenero = () => {
+const EditarGenero = (props) => {
+    const idGenero = props.match.params.id;
     const [name, setName] = useState('');
-    const [errorForm, setErrorForm] = useState(null);
+    const [errorGetGenre, setErrorGetGenre] = useState(false);
     const [successForm, setSuccessForm] = useState(null);
+    const [errorForm, setErrorForm] = useState(null);
+
+    useEffect(() => {
+        axios.get(`/api/genres/${idGenero}`)
+            .then(res => setName(res.data.name))
+            .catch(error => {
+                setErrorGetGenre(true);
+            });
+    }, [idGenero]);
 
     const onChangeForm = (event) => {
         setName(event.target.value);
@@ -17,7 +27,7 @@ const NovoGenero = () => {
         }
 
         axios
-            .post('/api/genres', { name })
+            .put(`/api/genres/${idGenero}`, { name })
             .then(() => {
                 setSuccessForm(true);
                 setErrorForm(false);
@@ -32,10 +42,10 @@ const NovoGenero = () => {
     return (
         <div className='row'>
             <div className='col'>
-                <h1>Novo gênero</h1>
+                <h1>Editar gênero</h1>
                 <Link to='/generos' className='text-primary'><i className="fa fa-chevron-left" aria-hidden="true"></i> Voltar</Link>
 
-                <form className='form-row my-4'>
+                {!errorGetGenre && <form className='form-row my-4'>
                     <div className='col-lg-6'>
                         <label htmlFor='name'><strong>Nome do gênero</strong></label>
                         <input type='text' value={name} onChange={onChangeForm} id='name' className='form-control' placeholder='Aventura, Comédia, Suspense...' />
@@ -43,9 +53,11 @@ const NovoGenero = () => {
                         {successForm && <p className='alert alert-success'>Dados cadastrados com sucesso! /o/</p>}
                         {errorForm && <p className='alert alert-danger'>Erro ao cadastrar os dados! :(</p>}
                     </div>
-                </form>
+                </form>}
+                {errorGetGenre && <p className='alert alert-danger mt-3'>Erro ao buscar as informações do Gênero! :(</p>}
             </div>
         </div>
     )
 }
-export default NovoGenero;
+
+export default EditarGenero;

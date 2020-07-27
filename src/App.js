@@ -10,6 +10,7 @@ import Home from './Home';
 import Generos from './Generos';
 import axios from 'axios';
 import NovoGenero from './NovoGenero';
+import EditarGenero from './EditarGenero';
 
 function App() {
   const [data, setData] = useState({});
@@ -27,7 +28,8 @@ function App() {
       <div className='container my-4'>
         <Route path='/' exact component={Home} />
         <Route path='/generos' exact component={Generos} />
-        <Route path='/generos/novo' component={NovoGenero} />
+        <Route path='/generos/novo' exact component={NovoGenero} />
+        <Route path='/generos/:id' exact component={EditarGenero} />
       </div>
     </Router>
   );

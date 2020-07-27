@@ -35,7 +35,7 @@ const Generos = () => {
                 <td>{item.id}</td>
                 <td>{item.name}</td>
                 <td>
-                    <Link to='/genres/{item.id}' className="btn btn-warning py-2 px-3 mr-2">
+                    <Link to={`/generos/${item.id}`} className="btn btn-warning py-2 px-3 mr-2">
                         <i className="fa fa-pencil" aria-hidden="true"></i> Editar
                     </Link>
                     <button onClick={() => deletarGenero(item.id)} className="btn btn-danger py-2 px-3">
@@ -54,7 +54,6 @@ const Generos = () => {
                 setData(res.data.data);
             });
     }, []);
-
 
 
     if (data.length === 0) {
