@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import 'mdbootstrap/css/bootstrap.min.css';
 import 'mdbootstrap/css/mdb.min.css';
@@ -26,10 +26,12 @@ function App() {
     <Router>
       <Header />
       <div className='container my-4'>
-        <Route path='/' exact component={Home} />
-        <Route path='/generos' exact component={Generos} />
-        <Route path='/generos/novo' exact component={NovoGenero} />
-        <Route path='/generos/:id' exact component={EditarGenero} />
+        <Switch>
+          <Route path='/' exact component={Home} />
+          <Route path='/generos' exact component={Generos} />
+          <Route path='/generos/novo' exact component={NovoGenero} />
+          <Route path='/generos/:id' exact component={EditarGenero} />
+        </Switch>
       </div>
     </Router>
   );
