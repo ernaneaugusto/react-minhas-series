@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Generos = () => {
     const [data, setData] = useState([]);
-
-    useEffect(() => {
-        axios
-            .get('/api/genres')
-            .then(res => {
-                setData(res.data.data);
-            });
-    }, []);
+    const HeaderGenero = () => {
+        return (
+            <div className='d-flex justify-content-between mb-4'>
+                <h1>Gêneros</h1>
+                <Link to='/generos/novo' className='btn btn-info'>+ Cadastrar</Link>
+            </div>
+        )
+    }
 
     const tableRowData = (item, index) => {
         return (
@@ -25,16 +26,30 @@ const Generos = () => {
         )
     }
 
+    useEffect(() => {
+        axios
+            .get('/api/genres')
+            .then(res => {
+                // adiciona os resultados retornados da api a variavel data
+                setData(res.data.data);
+            });
+    }, []);
+
+
+
     if (data.length === 0) {
         return (
-            <p className='alert alert-warning'>Nenhum <strong>Gênero</strong> encontrado!</p>
+            <React.Fragment>
+                <HeaderGenero />
+                <p className='alert alert-warning'>Nenhum <strong>Gênero</strong> encontrado!</p>
+            </React.Fragment>
         )
     }
 
     return (
         <div className='row'>
             <div className='col-12'>
-                <h1>Gêneros</h1>
+                <HeaderGenero />
 
                 <table className='table table-striped'>
                     <thead>
