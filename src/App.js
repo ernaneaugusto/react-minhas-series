@@ -8,19 +8,12 @@ import './App.css';
 import Header from './Header';
 import Home from './Home';
 import Generos from './Generos';
-import axios from 'axios';
 import NovoGenero from './NovoGenero';
 import EditarGenero from './EditarGenero';
+import Series from './Series';
 
 function App() {
   const [data, setData] = useState({});
-
-  useEffect(() => {
-    axios.get('/api')
-      .then(res => {
-        setData(res.data);
-      });
-  }, []);
 
   return (
     <Router>
@@ -28,6 +21,7 @@ function App() {
       <div className='container my-4'>
         <Switch>
           <Route path='/' exact component={Home} />
+          <Route path='/series' exact component={Series} />
           <Route path='/generos' exact component={Generos} />
           <Route path='/generos/novo' exact component={NovoGenero} />
           <Route path='/generos/:id' exact component={EditarGenero} />
