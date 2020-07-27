@@ -1,23 +1,24 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 import 'mdbootstrap/css/bootstrap.min.css';
 import 'mdbootstrap/css/mdb.min.css';
 import './App.css';
 
+import Header from './Header';
+
+const Home = () => <h1>Home</h1>
+const Generos = () => <h1>Gêneros</h1>
+
 function App() {
   return (
-    <div className="App">
-      <nav className="navbar navbar-expand navbar-dark primary-color">
-        <a className="navbar-brand" href="#">Minhas Séries</a>
-        <ul className="navbar-nav">
-          <li className="nav-item active">
-            <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#">Séries</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
+    <Router>
+      <Header />
+      <div className='container'>
+        <Route path='/' exact component={Home} />
+        <Route path='/generos' component={Generos} />
+      </div>
+    </Router>
   );
 }
 
