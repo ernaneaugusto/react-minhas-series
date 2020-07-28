@@ -7,7 +7,7 @@ const Series = () => {
     const HeaderSeries = () => {
         return (
             <div className='d-flex justify-content-between mb-4'>
-                <h1>Gêneros</h1>
+                <h1>Séries</h1>
                 <Link to='/series/novo' className='btn btn-info'><i className="fa fa-plus" aria-hidden="true"></i> Cadastrar</Link>
             </div>
         )

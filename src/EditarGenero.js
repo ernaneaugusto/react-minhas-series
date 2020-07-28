@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 const EditarGenero = (props) => {
@@ -39,6 +39,10 @@ const EditarGenero = (props) => {
             });
     }
 
+    if (successForm) {
+        return <Redirect to='/generos' />
+    }
+    
     return (
         <div className='row'>
             <div className='col'>
@@ -50,7 +54,6 @@ const EditarGenero = (props) => {
                         <label htmlFor='name'><strong>Nome do gênero</strong></label>
                         <input type='text' value={name} onChange={onChangeForm} id='name' className='form-control' placeholder='Aventura, Comédia, Suspense...' />
                         <button className='btn btn-info my-4' onClick={onSubmitForm} type='button'><i className="fa fa-check" aria-hidden="true"></i>  Salvar</button>
-                        {successForm && <p className='alert alert-success'>Dados cadastrados com sucesso! /o/</p>}
                         {errorForm && <p className='alert alert-danger'>Erro ao cadastrar os dados! :(</p>}
                     </div>
                 </form>}
