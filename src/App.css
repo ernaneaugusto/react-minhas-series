@@ -1,0 +1,45 @@
+.main-content {
+    min-height: 60vh;
+    margin-top: 20px;
+}
+.main-title {
+    font-size: 1.25rem;
+    margin-bottom: 0;
+}
+.social-icons {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    padding-top: 4px;
+    transition: 0.25s ease-in-out all;
+    margin-right: 10px;
+}
+.min-vh-60 {
+    min-height: 60vh;
+}
+.social-icons:hover {
+    transform: translateY(-2px);
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
+}
+
+.social-icons.blue .fa {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.social-icons.black .fa {
+    color: #fff;
+    background-color: #2c3e50;
+}
+
+/* Sobrescreve estilos padrao MDBootstrap */
+.card-body {
+    padding: 10px;
+}
+.btn {
+    padding: 0.5rem 0.75rem;
+}

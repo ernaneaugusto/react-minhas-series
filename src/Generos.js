@@ -6,9 +6,13 @@ const Generos = () => {
     const [data, setData] = useState([]);
     const HeaderGenero = () => {
         return (
-            <div className='d-flex justify-content-between mb-4'>
-                <h1>Gêneros</h1>
-                <Link to='/generos/novo' className='btn btn-info'><i className="fa fa-plus" aria-hidden="true"></i> Cadastrar</Link>
+            <div className='card'>
+                <div className='card-body'>
+                    <div className='d-flex justify-content-between align-items-center'>
+                        <h1 className='main-title'>Gêneros</h1>
+                        <Link to='/generos/novo' className='btn btn-info'><i className="fa fa-plus" aria-hidden="true"></i> Cadastrar</Link>
+                    </div>
+                </div>
             </div>
         )
     }
@@ -60,30 +64,40 @@ const Generos = () => {
         return (
             <React.Fragment>
                 <HeaderGenero />
-                <p className='alert alert-warning'>Nenhum <strong>Gênero</strong> encontrado!</p>
+                <div className='card mt-4 main-content'>
+                    <div className='card-body'>
+                        <p className='alert alert-warning'>Nenhum <strong>Gênero</strong> encontrado!</p>
+                    </div>
+                </div>
             </React.Fragment>
         )
     }
 
     return (
-        <div className='row'>
-            <div className='col-12'>
-                <HeaderGenero />
+        <React.Fragment>
+            <HeaderGenero />
+            <div className='card mt-4 main-content'>
+                <div className='card-body'>
+                    <div className='row'>
+                        <div className='col-12'>
 
-                <table className='table table-striped'>
-                    <thead>
-                        <tr>
-                            <th scope='col'>#</th>
-                            <th scope='col'>Descrição</th>
-                            <th scope='col'>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {data.map(tableRowData)}
-                    </tbody>
-                </table>
+                            <table className='table table-striped'>
+                                <thead>
+                                    <tr>
+                                        <th scope='col'>#</th>
+                                        <th scope='col'>Descrição</th>
+                                        <th scope='col'>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {data.map(tableRowData)}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </React.Fragment>
     )
 }
 

@@ -6,9 +6,13 @@ const Series = () => {
     const [data, setData] = useState([]);
     const HeaderSeries = () => {
         return (
-            <div className='d-flex justify-content-between mb-4'>
-                <h1>Séries</h1>
-                <Link to='/series/novo' className='btn btn-info'><i className="fa fa-plus" aria-hidden="true"></i> Cadastrar</Link>
+            <div className='card'>
+                <div className='card-body'>
+                    <div className='d-flex justify-content-between align-items-center'>
+                        <h1 className='main-title'>Séries</h1>
+                        <Link to='/series/novo' className='btn btn-info'><i className="fa fa-plus" aria-hidden="true"></i> Cadastrar</Link>
+                    </div>
+                </div>
             </div>
         )
     }
@@ -35,6 +39,11 @@ const Series = () => {
                 <td>{item.id}</td>
                 <td>{item.name}</td>
                 <td>
+                    {item.status === 'assistido' && <span className='badge p-1 badge-success'>Sim</span>}
+                    {item.status === 'naoAssistido' && <span className='p-1 badge badge-danger'>Não</span>}
+                </td>
+                <td>{item.genre}</td>
+                <td>
                     <Link to={`/series/${item.id}`} className="btn btn-warning py-2 px-3 mr-2">
                         <i className="fa fa-pencil" aria-hidden="true"></i> Editar
                     </Link>
@@ -59,29 +68,41 @@ const Series = () => {
         return (
             <React.Fragment>
                 <HeaderSeries />
-                <p className='alert alert-warning'>Nenhuma <strong>Série</strong> encontrado!</p>
+                <div className='card mt-4 main-content'>
+                    <div className='card-body'>
+                        <p className='alert alert-warning'>Nenhuma <strong>Série</strong> encontrada!</p>
+                    </div>
+                </div>
             </React.Fragment>
         )
     }
 
     return (
-        <div className='row'>
-            <div className='col-12'>
-                <HeaderSeries />
-                <table className='table table-striped'>
-                    <thead>
-                        <tr>
-                            <th scope='col'>#</th>
-                            <th scope='col'>Descrição</th>
-                            <th scope='col'>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {data.map(tableRowData)}
-                    </tbody>
-                </table>
+        <React.Fragment>
+            <HeaderSeries />
+            <div className='card main-content'>
+                <div className='card-body'>
+                    <div className='row'>
+                        <div className='col-12'>
+                            <table className='table table-striped'>
+                                <thead>
+                                    <tr>
+                                        <th scope='col'>#</th>
+                                        <th scope='col'>Descrição</th>
+                                        <th scope='col'>Já Assistiu</th>
+                                        <th scope='col'>Gênero</th>
+                                        <th scope='col'>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {data.map(tableRowData)}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </React.Fragment>
     )
 }
 

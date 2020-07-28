@@ -42,22 +42,27 @@ const EditarGenero = (props) => {
     if (successForm) {
         return <Redirect to='/generos' />
     }
-    
-    return (
-        <div className='row'>
-            <div className='col'>
-                <h1>Editar gênero</h1>
-                <Link to='/generos' className='text-primary'><i className="fa fa-chevron-left" aria-hidden="true"></i> Voltar</Link>
 
-                {!errorGetGenre && <form className='form-row my-4'>
-                    <div className='col-lg-6'>
-                        <label htmlFor='name'><strong>Nome do gênero</strong></label>
-                        <input type='text' value={name} onChange={onChangeForm} id='name' className='form-control' placeholder='Aventura, Comédia, Suspense...' />
-                        <button className='btn btn-info my-4' onClick={onSubmitForm} type='button'><i className="fa fa-check" aria-hidden="true"></i>  Salvar</button>
-                        {errorForm && <p className='alert alert-danger'>Erro ao cadastrar os dados! :(</p>}
+    return (
+        <div className='card main-content'>
+            <div className='card-body'>
+                <div className='row'>
+                    <div className='col-12 mb-4'>
+                        <h1 className='main-title mb-3'>Editar gênero</h1>
+                        <Link to='/generos' className='text-primary'><i className="fa fa-chevron-left" aria-hidden="true"></i> Voltar</Link>
                     </div>
-                </form>}
-                {errorGetGenre && <p className='alert alert-danger mt-3'>Erro ao buscar as informações do Gênero! :(</p>}
+                    <div className='col-12'>
+                        {!errorGetGenre && <form className='form-row'>
+                            <div className='col-lg-6'>
+                                <label htmlFor='name'><strong>Nome do gênero</strong></label>
+                                <input type='text' value={name} onChange={onChangeForm} id='name' className='form-control' placeholder='Aventura, Comédia, Suspense...' />
+                                <button className='btn btn-info my-3 mx-0' onClick={onSubmitForm} type='button'><i className="fa fa-check" aria-hidden="true"></i>  Salvar</button>
+                                {errorForm && <p className='alert alert-danger'>Erro ao cadastrar os dados! :(</p>}
+                            </div>
+                        </form>}
+                        {errorGetGenre && <p className='alert alert-danger mt-3'>Erro ao buscar as informações do Gênero! :(</p>}
+                    </div>
+                </div>
             </div>
         </div>
     )

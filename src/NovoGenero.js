@@ -34,19 +34,23 @@ const NovoGenero = () => {
     }
 
     return (
-        <div className='row'>
-            <div className='col'>
-                <h1>Novo gênero</h1>
-                <Link to='/generos' className='text-primary'><i className="fa fa-chevron-left" aria-hidden="true"></i> Voltar</Link>
+        <div className='card main-content'>
+            <div className='card-body'>
+                <div className='row'>
+                    <div className='col'>
+                        <h1 className='main-title mb-3'>Novo gênero</h1>
+                        <Link to='/generos' className='text-primary'><i className="fa fa-chevron-left" aria-hidden="true"></i> Voltar</Link>
 
-                <form className='form-row my-4'>
-                    <div className='col-lg-6'>
-                        <label htmlFor='name'><strong>Nome do gênero</strong></label>
-                        <input type='text' value={name} onChange={onChangeForm} id='name' className='form-control' placeholder='Aventura, Comédia, Suspense...' />
-                        <button className='btn btn-info my-4' onClick={onSubmitForm} type='button'><i className="fa fa-check" aria-hidden="true"></i>  Salvar</button>
-                        {errorForm && <p className='alert alert-danger'>Erro ao cadastrar os dados! :(</p>}
+                        <form className='form-row my-4'>
+                            <div className='col-lg-6'>
+                                <label htmlFor='name'><strong>Nome do gênero</strong></label>
+                                <input type='text' value={name} onChange={onChangeForm} id='name' className='form-control' placeholder='Aventura, Comédia, Suspense...' />
+                                <button className='btn btn-info my-4 mx-0' onClick={onSubmitForm} type='button'><i className="fa fa-check" aria-hidden="true"></i>  Salvar</button>
+                                {errorForm && <p className='alert alert-danger'>Erro ao cadastrar os dados! :(</p>}
+                            </div>
+                        </form>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     )
