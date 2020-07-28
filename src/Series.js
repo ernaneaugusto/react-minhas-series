@@ -84,20 +84,22 @@ const Series = () => {
                 <div className='card-body'>
                     <div className='row'>
                         <div className='col-12'>
-                            <table className='table table-striped'>
-                                <thead>
-                                    <tr>
-                                        <th scope='col'>#</th>
-                                        <th scope='col'>Descrição</th>
-                                        <th scope='col'>Já Assistiu</th>
-                                        <th scope='col'>Gênero</th>
-                                        <th scope='col'>Ações</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {data.map(tableRowData)}
-                                </tbody>
-                            </table>
+                            <div className='table-responsive'>
+                                <table className='table table-striped'>
+                                    <thead>
+                                        <tr>
+                                            <th scope='col'>#</th>
+                                            <th scope='col'>Descrição</th>
+                                            <th scope='col'>Já Assistiu</th>
+                                            <th scope='col'>Gênero</th>
+                                            <th scope='col'>Ações</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {data.map(tableRowData)}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
