@@ -76,7 +76,11 @@ const EditarSerie = (props) => {
                         </div>
                         <div className='col-lg-9 text-white'>
                             <h1>{formData.name}</h1>
-                            <p><strong>Gênero:</strong> {formData.genre}</p>
+                            <p className="p-0 m-0"><strong>Gênero:</strong> {formData.genre}</p>
+                            {
+                                formData.comments &&
+                                <p><strong>Comentários:</strong> {formData.comments}</p>
+                            }
                             {formData.status === 'assistido' && <p className='badge badge-success'>Assistido</p>}
                             {formData.status === 'naoAssistido' && <p className='badge badge-warning'>Para assistir</p>}
 
@@ -87,7 +91,7 @@ const EditarSerie = (props) => {
                                 }
                                 {mode === 'EDIT' &&
                                     <button className='btn btn-warning mx-0' onClick={() => setMode('INFO')}>
-                                        <i className='fa fa-close'></i> Fechar</button>
+                                        <i className='fa fa-close'></i> Cancelar edição</button>
                                 }
                             </div>
                         </div>
